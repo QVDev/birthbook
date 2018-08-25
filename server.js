@@ -31,16 +31,18 @@ app.get('/', function(request, response) {
     response.render('pages/create.ejs');
 });
 
-app.get('/-*:id', function(request, response) {
+app.get('/:id', function(request, response) {
   var id = request.params.id
-  response.locals.id = id;
-
-  response.render('pages/index.ejs', {bdayId: id});
+  if(id == 'faq') {   
+    showFaq(request, response);
+  } else {
+    response.render('pages/index.ejs', {bdayId: id});
+  }
 });
 
-app.get('/faq', function(request, response) {
+function showFaq(request, response) {
     response.render('pages/faq.ejs');
-});
+};
 
 app.post('/', function(request, response) {
   var id = request.body.id;
