@@ -38,15 +38,10 @@ app.get('/', function(request, response) {
   }
 });
 
-app.get('/:id', function(request, response) {
-
+app.get('/-*:id', function(request, response) {
   var id = request.params.id
-  if(id == 'faq') {
-      response.render('pages/faq.ejs');
-      } else {
   response.locals.id = id;
   response.render('pages/index.ejs', {bdayId: id});
-          }
 });
 
 app.get('/faq', function(request, response) {
