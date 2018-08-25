@@ -28,14 +28,13 @@ app.get('/browserconfig.xml', function(request, response) {
 });
 
 app.get('/', function(request, response) {
-  var id = request.query.id
-  
-  if(id != null) {
-    response.locals.id = id;
-    response.render('pages/index.ejs', {bdayId: id});
-  } else {
     response.render('pages/create.ejs');
-  }
+});
+
+app.get('/:id', function(request, response) {
+  var id = request.params.id
+  response.locals.id = id;
+  response.render('pages/index.ejs', {bdayId: id});
 });
 
 app.get('/faq', function(request, response) {
@@ -52,7 +51,7 @@ app.post('/', function(request, response) {
 app.post('/create', function(request, response) {
   var email = request.body.email;
   var id = createList(email);
-  var link = "https://birthbook.herokuapp.com/?id=" + id;
+  var link = "https://birthbook.herokuapp.com/" + id;
   
   response.render('pages/created.ejs', {bdayId: link});
 });
@@ -68,8 +67,6 @@ function createList(email) {
     id: newAppKey.key,
     email: email
   });
-  console.log(newAppKey.key);
-  
   return newAppKey.key;
 }
 
