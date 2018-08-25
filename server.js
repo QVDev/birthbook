@@ -28,7 +28,14 @@ app.get('/browserconfig.xml', function(request, response) {
 });
 
 app.get('/', function(request, response) {
+  //Deprecated remove in production
+  var id = request.query.id
+  if(id != null) {
+    response.locals.id = id;
+    response.render('pages/index.ejs', {bdayId: id});
+  } else {
     response.render('pages/create.ejs');
+  }
 });
 
 app.get('/:id', function(request, response) {
