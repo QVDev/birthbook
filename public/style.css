@@ -1,0 +1,145 @@
+/* styles */
+/* called by your view template */
+
+* {
+  box-sizing: border-box;
+}
+
+/* body {
+  background-color:#F1F3ED;
+  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+  margin: 2em;
+  padding-left: 10%;
+  padding-right: 10%;
+  margin: auto;
+  width: 100%;
+} */
+
+html, body {
+  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+/*   background-color:#F1F3ED; */
+/*   https://pattern.flaticon.com/ */
+  background-image: url("https://cdn.glitch.com/1de69b23-dae0-45d6-ab4c-551066dcb98e%2Fpattern.svg?1535094247546"); 
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;    
+}
+
+header {
+    height: 13em;
+  background-color:#F1F3EDAA;
+}
+
+main {
+    flex: auto;
+    text-align: center;
+  background-color:#F1F3EDAA;
+}
+
+footer {
+    height: 5em; 
+}
+
+h3 {
+  font-style: italic;
+  color: black;
+  text-align: center;
+  width: 100%;
+}
+
+h4 {
+  font-style: italic;
+  color: black;
+  text-align: center;
+  width: 100%;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+form {
+  margin-bottom: 25px;
+  padding:5%;
+  background-color: #E37222CC;
+  display: inline-block;
+/*   width: 100%; */
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4), 0 12px 40px 0 rgba(0, 0, 0, 0.38);
+  margin-left: auto;
+  margin-right: auto;
+/*   border-radius: 5px; */
+}
+
+input {
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 75%;
+  border: 0px solid grey;
+  border-radius: 3px;
+  font-size: 16px;
+  text-align: center;
+  border-bottom: 2px solid #FFFFFF;
+  background: transparent;
+  margin-left: auto;
+  margin-right: auto;
+  color:white;
+  min-width:300px;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: lightgrey;
+    opacity: 1; /* Firefox */
+}
+
+button {
+  font-size: 16px;
+  cursor: pointer;
+  width: 75%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+  border: none;
+  background: #779598;
+  color: #ffffff !important;
+  text-transform: uppercase;
+  font-weight: 100;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+button:hover {
+color: #000000 !important;
+background: #F1F3ED;
+border-color: #F1F3ED !important;
+transition: all 0.4s ease 0s;
+}
+
+button:active {
+  box-shadow: none;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+footer {
+  margin-top: 50px;
+  padding-top: 25px;
+  border-top: 1px solid lightgrey;
+}
+
+dt::before {
+       content: "Question: ";
+   } 
+   dd::before {
+       content: "Answer: ";
+   }
+
