@@ -52,7 +52,7 @@ app.post('/', function(request, response) {
 app.post('/create', function(request, response) {
   var email = request.body.email;
   var id = createList(email);
-  var link = "/?id=" + id;
+  var link = "https://birthbook.herokuapp.com/?id=" + id;
   
   response.render('pages/created.ejs', {bdayId: link});
 });
