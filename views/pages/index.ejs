@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include ../partials/head %>
+    <% include ../partials/analytics %>
+    <script src="/client.js" defer></script>
+  </head>
+  <body>    
+    <header>
+      <% include ../partials/welcome %>
+      <h4>
+        Please fill out your name and birthday
+      </h4>
+    </header>
+
+    <main>      
+      <form id="add-birthday">
+        <input name="name" type="text" maxlength="100" required placeholder="Enter name here..." aria-labelledby="submit-dream">
+        <input name="date" type="date" maxlength="100" required placeholder="Enter your birthday here..." aria-labelledby="submit-dream">
+        <input name="id" type="hidden" maxlength="100" value="<%= bdayId %>" aria-labelledby="submit-dream">
+        <button type="submit" id="submit-dream">Submit Birthday</button>
+      </form>
+      <br>
+      <a href="https://stellar-leopard.glitch.me/">Make your own Birthday list</a>
+    </main>
+  </body>
+</html>
