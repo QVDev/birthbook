@@ -6,7 +6,7 @@
 }
 
 /* body {
-  background-color:#F1F3ED;
+  background-color:rgb(241,243,237);
   font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
   margin: 2em;
   padding-left: 10%;
@@ -17,7 +17,7 @@
 
 html, body {
   font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
-/*   background-color:#F1F3ED; */
+/*   background-color:rgb(241,243,237); */
 /*   https://pattern.flaticon.com/ */
   background-image: url("/images/background.svg"); 
   height: 100%;
@@ -32,14 +32,14 @@ body {
 }
 
 header {
-    height: 13em;
-  background-color:#F1F3EDAA;
+  height: 13em;
+  background-color:rgb(241,243,237,0.80);
 }
 
 main {
     flex: auto;
     text-align: center;
-  background-color:#F1F3EDAA;
+    background-color:rgb(241,243,237,0.80);
 }
 
 footer {
@@ -67,7 +67,7 @@ h4 {
 form {
   margin-bottom: 25px;
   padding:5%;
-  background-color: #E37222CC;
+  background-color: rgb(227,114,34,0.75);
   display: inline-block;
 /*   width: 100%; */
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4), 0 12px 40px 0 rgba(0, 0, 0, 0.38);
@@ -117,7 +117,7 @@ button {
 
 button:hover {
 color: #000000 !important;
-background: #F1F3ED;
+background: rgb(241,243,237);
 border-color: #F1F3ED !important;
 transition: all 0.4s ease 0s;
 }
