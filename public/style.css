@@ -19,7 +19,7 @@ html, body {
   font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
 /*   background-color:#F1F3ED; */
 /*   https://pattern.flaticon.com/ */
-  background-image: url("https://cdn.glitch.com/1de69b23-dae0-45d6-ab4c-551066dcb98e%2Fpattern.svg?1535094247546"); 
+  background-image: url("/images/background.svg"); 
   height: 100%;
   width: 100%;
   padding: 0;
@@ -46,7 +46,7 @@ footer {
     height: 5em; 
 }
 
-h3 {
+h1 {
   font-style: italic;
   color: black;
   text-align: center;
