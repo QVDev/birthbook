@@ -5,21 +5,13 @@
   box-sizing: border-box;
 }
 
-/* body {
-  background-color:rgb(241,243,237);
-  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
-  margin: 2em;
-  padding-left: 10%;
-  padding-right: 10%;
-  margin: auto;
-  width: 100%;
-} */
+
 
 html, body {
   font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
-/*   background-color:rgb(241,243,237); */
+/*   background-color:rgb(255,255,255); */
 /*   https://pattern.flaticon.com/ */
-  background-image: url("/images/background.svg"); 
+  background-image: url("https://cdn.glitch.com/1de69b23-dae0-45d6-ab4c-551066dcb98e%2Fvectorpaint.svg?1535890608013"); 
   height: 100%;
   width: 100%;
   padding: 0;
@@ -33,13 +25,13 @@ body {
 
 header {
   height: 13em;
-  background-color:rgb(241,243,237,0.80);
+/*   background-color:rgb(241,243,237,0.80); */
 }
 
 main {
     flex: auto;
     text-align: center;
-    background-color:rgb(241,243,237,0.80);
+/*     background-color:rgb(241,243,237,0.80); */
 }
 
 footer {
@@ -73,7 +65,7 @@ form {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4), 0 12px 40px 0 rgba(0, 0, 0, 0.38);
   margin-left: auto;
   margin-right: auto;
-/*   border-radius: 5px; */
+  border-radius: 5px;
 }
 
 input {
@@ -81,15 +73,14 @@ input {
   margin-bottom: 10px;
   padding: 5px;
   width: 75%;
-  border: 0px solid grey;
-  border-radius: 3px;
+  border-radius: 5px;
   font-size: 16px;
   text-align: center;
-  border-bottom: 2px solid #FFFFFF;
-  background: transparent;
+  border: 2px solid #FFFFFF;
+/*   background: transparent; */
   margin-left: auto;
   margin-right: auto;
-  color:white;
+  color:black;
   min-width:300px;
 }
 
@@ -131,9 +122,12 @@ li {
 }
 
 footer {
-  margin-top: 50px;
-  padding-top: 25px;
-  border-top: 1px solid lightgrey;
+  height: 5em; 
+  text-align: center;
+/*   background-color:#F1F3EDAA; */
+  margin-top: 0px;
+  padding-top: 0px;
+  border-top: 0px solid lightgrey;
 }
 
 dt::before {

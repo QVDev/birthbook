@@ -3,14 +3,7 @@
   display: inline-block
 }
 
-footer {
-  height: 5em; 
-  text-align: center;
-  background-color:#F1F3EDAA;
-  margin-top: 0px;
-  padding-top: 0px;
-  border-top: 0px solid lightgrey;
-}
+
 
 .resp-sharing-button__link {
   text-decoration: none;
