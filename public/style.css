@@ -46,17 +46,22 @@ h1,h2,h3,h4 {
   font-size: 16px;
 }
 
+.welcome {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .bold {
   font-weight: bold;
 }
 
 form {
-  margin-bottom: 25px;
-  padding:5%;
-  background-color: #E37222AA;
+  margin: 2%;
+/*   background-color: #E37222AA; */
   display: inline-block;
 /*   width: 100%; */
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4), 0 12px 40px 0 rgba(0, 0, 0, 0.38);
+/*   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4), 0 12px 40px 0 rgba(0, 0, 0, 0.38); */
   margin-left: auto;
   margin-right: auto;
   border-radius: 5px;
@@ -70,11 +75,12 @@ input {
   border-radius: 5px;
   font-size: 16px;
   text-align: center;
-  border: 2px solid #FFFFFF;
-/*   background: transparent; */
+  border: 2px solid #E37222;
+  background: #E37222;
   margin-left: auto;
   margin-right: auto;
-  color:black;
+  color:white;
+  height: 40px;
   min-width:300px;
 }
 
@@ -90,7 +96,8 @@ button {
   display: block;
   margin-left: auto;
   margin-right: auto;
-
+  min-width:300px;
+  height: 40px;
   border: none;
   background: #779598;
   color: #ffffff !important;
