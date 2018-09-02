@@ -42,7 +42,7 @@ app.get('/:id', function(request, response) {
 
 function showFaq(request, response) {
     response.render('pages/faq.ejs');
-};
+}
 
 app.post('/', function(request, response) {
   var id = request.body.id;
