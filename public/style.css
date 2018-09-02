@@ -38,18 +38,12 @@ footer {
     height: 5em; 
 }
 
-h1 {
+h1,h2,h3,h4 {
   font-style: italic;
   color: black;
   text-align: center;
   width: 100%;
-}
-
-h4 {
-  font-style: italic;
-  color: black;
-  text-align: center;
-  width: 100%;
+  font-size: 16px;
 }
 
 .bold {
@@ -59,7 +53,7 @@ h4 {
 form {
   margin-bottom: 25px;
   padding:5%;
-  background-color: rgb(227,114,34,0.75);
+  background-color: #E37222AA;
   display: inline-block;
 /*   width: 100%; */
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4), 0 12px 40px 0 rgba(0, 0, 0, 0.38);
