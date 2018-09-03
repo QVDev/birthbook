@@ -11,7 +11,7 @@ html, body {
   font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
 /*   background-color:rgb(255,255,255); */
 /*   https://pattern.flaticon.com/ */
-  background-image: url("https://cdn.glitch.com/1de69b23-dae0-45d6-ab4c-551066dcb98e%2Fvectorpaint.svg?1535890608013"); 
+  background-image: url(/images/background.svg); 
   height: 100%;
   width: 100%;
   padding: 0;
