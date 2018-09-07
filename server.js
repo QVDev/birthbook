@@ -6,17 +6,25 @@ var express = require('express');
 var app = express();
 var request = require('request');
 var bodyParser = require('body-parser');
-var firebase = require('firebase');
 
-var config = {
-    apiKey: process.env.API,
-    authDomain: process.env.DOMAIN,
-    databaseURL: process.env.URL,
-    projectId: process.env.ID,
-    storageBucket: process.env.BUCKET,
-    messagingSenderId: process.env.SENDER_ID
-  };
-  firebase.initializeApp(config);
+var admin = require("firebase-admin");
+let firebaseServiceAccount = {
+  "type": "service_account",
+  "project_id": process.env.PROJECT_ID,
+  "private_key_id": process.env.PRIVATE_KEY_ID,
+  "private_key": process.env.PRIVATE_KEY,
+  "client_email": process.env.CLIENT_EMAIL,
+  "client_id": process.env.CLIENT_ID,
+  "auth_uri": process.env.AUTH_URI,
+  "token_uri": process.env.TOKEN_URI,
+  "auth_provider_x509_cert_url": process.env.AUTH_PROVIDER,
+  "client_x509_cert_url": process.env.CLIENT_CERT
+}
+
+admin.initializeApp({
+  credential: admin.credential.cert(firebaseServiceAccount),
+  databaseURL: "https://birthday-collector.firebaseio.com"
+});
 
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
@@ -29,6 +37,19 @@ app.get('/browserconfig.xml', function(request, response) {
 
 app.get('/', function(request, response) {
     response.render('pages/create.ejs');
+});
+
+app.get('/view/:id/:email', function(request, response) {
+    var id = request.params.id
+    var email = request.params.email
+    var data = getUserData(id, email)
+    .then(function(result){
+        // var birthdays = JSON.p(result);
+        response.render('pages/view.ejs', {data: result});
+      })
+    .catch(function(error){
+          response.render('pages/create.ejs');
+    });
 });
 
 app.get('/:id', function(request, response) {
@@ -78,4 +99,16 @@ function writeUserData(id, name, date) {
   playersRef.child(name).set ({
      date: date     
   });
+}
+
+function getUserData(id, email) {
+  var bdayRef = admin.database().ref("/" + id);
+  var data = bdayRef.once('value').then(function(snapshot) {
+    if(snapshot.val().email == email && snapshot.val().id == id) {  
+      return snapshot.val();
+    } else {
+      throw "List does not exist";  
+    }
+  });
+  return data;
 }
