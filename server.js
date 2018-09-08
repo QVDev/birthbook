@@ -85,7 +85,7 @@ var listener = app.listen(process.env.PORT, function() {
 });
 
 function createList(email) {
-  var postsRef = firebase.database().ref("/");
+  var postsRef = admin.database().ref("/");
   var newAppKey = postsRef.push();
   newAppKey.set({
     id: newAppKey.key,
@@ -95,7 +95,7 @@ function createList(email) {
 }
 
 function writeUserData(id, name, date) {
-  var playersRef = firebase.database().ref(id + '/');
+  var playersRef = admin.database().ref(id + '/');
   playersRef.child(name).set ({
      date: date     
   });
