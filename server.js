@@ -6,6 +6,7 @@ var express = require('express');
 var app = express();
 var request = require('request');
 var bodyParser = require('body-parser');
+var shortid = require('shortid');
 
 var admin = require("firebase-admin");
 let firebaseServiceAccount = {
@@ -39,10 +40,10 @@ app.get('/', function(request, response) {
     response.render('pages/create.ejs');
 });
 
-app.get('/view/:id/:email', function(request, response) {
+app.get('/view/:id/:recoverId', function(request, response) {
     var id = request.params.id
-    var email = request.params.email
-    var data = getUserData(id, email)
+    var recoverId = request.params.recoverId
+    var data = getUserData(id, recoverId)
     .then(function(result){
         // var birthdays = JSON.p(result);
         response.render('pages/view.ejs', {data: result});
@@ -73,23 +74,24 @@ app.post('/', function(request, response) {
 });
 
 app.post('/create', function(request, response) {
-  var email = request.body.email;
-  var id = createList(email);
+  var recoverId = shortid.generate();
+  var id = createList(recoverId);
   var link = "http://birthbook.me/" + id;
+  var recoverLink = "http://birthbook.me/view/" + id + "/" + recoverId;
 
-  response.render('pages/created.ejs', {bdayId: link});
+  response.render('pages/created.ejs', {bdayId: link, recoverLink:recoverLink});
 });
 
 var listener = app.listen(process.env.PORT, function() {
   console.log('Your app is listening on port ' + listener.address().port);
 });
 
-function createList(email) {
+function createList(recoverId) {
   var postsRef = admin.database().ref("/");
   var newAppKey = postsRef.push();
   newAppKey.set({
     id: newAppKey.key,
-    email: email
+    recoverId: recoverId
   });
   return newAppKey.key;
 }
@@ -104,7 +106,7 @@ function writeUserData(id, name, date) {
 function getUserData(id, email) {
   var bdayRef = admin.database().ref("/" + id);
   var data = bdayRef.once('value').then(function(snapshot) {
-    if(snapshot.val().email == email && snapshot.val().id == id) {  
+    if(snapshot.val().recoverId == email && snapshot.val().id == id) {  
       return snapshot.val();
     } else {
       throw "List does not exist";  
