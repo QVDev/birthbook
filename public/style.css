@@ -8,10 +8,10 @@
 
 
 html, body {
-  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+  font-family: "Andale Mono";
 /*   background-color:rgb(255,255,255); */
 /*   https://pattern.flaticon.com/ */
-  background-image: url(/images/background.svg); 
+/*   background-image: url(/images/background.svg);  */
   height: 100%;
   width: 100%;
   padding: 0;
@@ -24,13 +24,17 @@ body {
 }
 
 header {
-  height: 13em;
-/*   background-color:rgb(241,243,237,0.80); */
+  padding: 1em;
+  height: 17em;
+  background-color:rgb(39,35,60);
+  color:white;
 }
 
 main {
-    flex: auto;
-    text-align: center;
+  padding: 1em;
+  flex: auto;
+  text-align: center;
+  color:black;
 /*     background-color:rgb(241,243,237,0.80); */
 }
 
@@ -39,17 +43,21 @@ footer {
 }
 
 h1,h2,h3,h4 {
-  font-style: italic;
-  color: black;
   text-align: center;
-  width: 100%;
-  font-size: 16px;
+}
+
+h1,h3,h4 {
+  font-weight:normal;
+}
+
+.info {
+background-color:#779598;  
 }
 
 .welcome {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .bold {
@@ -134,7 +142,6 @@ footer {
 dt::before {
        content: "Question: ";
    } 
-   dd::before {
+dd::before {
        content: "Answer: ";
-   }
-
+}

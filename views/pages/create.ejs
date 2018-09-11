@@ -7,25 +7,27 @@
   </head>
   <body>    
     <header>
-      <% include ../partials/welcome %>
       <h1>
-        Collect birthdays from friends and family with ease.        
+        Forgetting birthdays?
       </h1>
       <h2>
-      And get easy reminders for birthdays from your calendar.
+        Use Birthbook
       </h2>
+      <br>
+      <h4>
+        Keep all your birthdays in one place. One simple link is all you need.
+      </h4>
     </header>
 
     <main>
       <form id="create-birthday">
-        <input name="email" type="email" required maxlength="100" placeholder="Type your email here..." aria-labelledby="submit-dream">
-        <button type="submit" id="submit-dream">Create list...</button>
+        <button type="submit" id="submit-dream">Get Started</button>
       </form>
       <br>
-      <i>*Email is required so we can sent you the birthday list</i>
+      Take a look at <a href="http://birthbook.me/faq" target="_blank">FAQ</a>      
       <br>
       <br>
-      Take a look at <a href="http://birthbook.me/faq" target="_blank">FAQ</a>
+      <% include ../partials/welcome %>
     </main>
     <% include ../partials/social %>
     <% include ../partials/raven %>
