@@ -40,9 +40,10 @@
         <%}%>
       <%}%>
       <br>
-      *Click birthday to add to Google Calendar
-      <br>       
       <form id="create_quicklink">
+        <h3>
+          Shorten your private url here:
+        </h3>
         <input name="quicklink" type="text" maxlength="100" required placeholder="Enter short url..." aria-labelledby="submit-dream">
         <input name="recoverId" type="hidden" value="<%= recoverId %>"  aria-labelledby="submit-dream">
         <input name="id" type="hidden" value="<%= bdayId %>" aria-labelledby="submit-dream">

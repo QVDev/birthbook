@@ -41,8 +41,18 @@ app.get('/', function(request, response) {
 });
 
 app.get('/count', function(request, response) {
-    getBirthdayCount().then(function(count){
-    response.render('pages/count.ejs', {birthdaycount: count});
+    getBirthdayCount().then(function(data){
+      var bdayCount = 0;
+      var listCount = 0;
+      listCount = data.numChildren();    
+      data.forEach(function(childSnapshot) {      
+        childSnapshot.forEach(function(lastNodeSnap) {        
+          if(lastNodeSnap.numChildren() > 0) { 
+            bdayCount += lastNodeSnap.numChildren();  
+            }
+          });
+        });      
+      response.render('pages/count.ejs', {listcount:listCount, birthdaycount: bdayCount});
   });
 });
 
@@ -50,9 +60,7 @@ app.get('/view/:quicklink', function(request, response) {
   var quicklink = request.params.quicklink;
   
   var data = getQuicklink(quicklink)
-  .then(function(data){
-    console.log(data.recoverId);
-    
+  .then(function(data){    
     var id = data.id
     var recoverId = data.recoverId
     var shareLink = "http://birthbook.me/" + id;
@@ -125,7 +133,6 @@ app.post('/create', function(request, response) {
 });
 
 app.post('/quicklink', function(request, response) {
-  console.log(request.body);
   var id = request.body.id;
   var quicklink = request.body.quicklink;
   
@@ -155,7 +162,6 @@ function writeUserData(id, name, date) {
 }
 
 function makeQuickLink(id, newLink) {
-  console.log(id + ":" + newLink);
   var bdayRef = admin.database().ref("/" + id).update({ "quicklink": newLink });
 }
 
@@ -187,15 +193,8 @@ function getQuicklink(quicklink) {
 
 function getBirthdayCount() {
   var bdayRef = admin.database().ref("/");
-  var data = bdayRef.once('value').then(function(snapshot) {
-    var count = 0;
-    snapshot.forEach(function(childSnapshot) {
-      count += childSnapshot.numChildren();
-      // childData will be the actual contents of the child
-      var childData = childSnapshot.val();      
-      });
-    return count;
-    // return snapshot.numChildren();
+  var data = bdayRef.once('value').then(function(snapshot) {      
+    return snapshot;
   });
   return data;
 }

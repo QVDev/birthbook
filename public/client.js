@@ -22,8 +22,6 @@ dreamsForm.onsubmit = function(event) {
   // reset form 
   nameInput.value = '';
   dateInput.value = '';
-  // nameInput.focus();
-  console.log(idInput.value);
 
   var xhr = new XMLHttpRequest();  
   
