@@ -139,11 +139,9 @@ footer {
   border-top: 0px solid lightgrey;
 }
 
-dt,dd {
-/*     float: left; */
-    position: relative;  
-    left: 33%;
-    max-width:500px;
+.faq {
+  margin: auto;
+  width: 75%;
   text-align:left;
 }
 
