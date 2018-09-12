@@ -37,16 +37,24 @@ app.get('/browserconfig.xml', function(request, response) {
 });
 
 app.get('/', function(request, response) {
-    response.render('pages/create.ejs');
+  response.render('pages/create.ejs');
+});
+
+app.get('/count', function(request, response) {
+    getBirthdayCount().then(function(count){
+    response.render('pages/count.ejs', {birthdaycount: count});
+  });
 });
 
 app.get('/view/:id/:recoverId', function(request, response) {
     var id = request.params.id
     var recoverId = request.params.recoverId
+    var shareLink = "http://birthbook.me/" + id;
+    var recoverLink = "http://birthbook.me/view/" + id + "/" + recoverId;
+  
     var data = getUserData(id, recoverId)
     .then(function(result){
-        // var birthdays = JSON.p(result);
-        response.render('pages/view.ejs', {data: result});
+        response.render('pages/view.ejs', {data: result, shareLink: shareLink, recoverLink: recoverLink});
       })
     .catch(function(error){
           response.render('pages/create.ejs');
@@ -79,7 +87,15 @@ app.post('/create', function(request, response) {
   var link = "http://birthbook.me/" + id;
   var recoverLink = "http://birthbook.me/view/" + id + "/" + recoverId;
 
-  response.render('pages/created.ejs', {bdayId: link, recoverLink:recoverLink});
+//   response.render('pages/created.ejs', {bdayId: link, recoverLink:recoverLink});
+  
+    var data = getUserData(id, recoverId)
+    .then(function(result){
+        response.render('pages/view.ejs', {data: result, shareLink: link, recoverLink: recoverLink});
+      })
+    .catch(function(error){
+          response.render('pages/create.ejs');
+    });
 });
 
 var listener = app.listen(process.env.PORT, function() {
@@ -111,6 +127,22 @@ function getUserData(id, email) {
     } else {
       throw "List does not exist";  
     }
+  });
+  return data;
+}
+
+function getBirthdayCount() {
+  var bdayRef = admin.database().ref("/");
+  var data = bdayRef.once('value').then(function(snapshot) {
+    var count = 0;
+    snapshot.forEach(function(childSnapshot) {
+      count += childSnapshot.numChildren();
+      console.log(count);
+      // childData will be the actual contents of the child
+      var childData = childSnapshot.val();      
+      });
+    return count;
+    // return snapshot.numChildren();
   });
   return data;
 }
