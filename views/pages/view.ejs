@@ -3,6 +3,7 @@
   <head>
     <% include ../partials/head %>
     <% include ../partials/analytics %>
+    <script src="/quicklink.js" defer></script>
   </head>
   <body>
     <header>      
@@ -33,13 +34,22 @@
         Birthdays:
       </h2>      
       <%for (var result in data){%>
-        <%if (result != "recoverId" && result != "id"){%>
+        <%if (result != "recoverId" && result != "id" && result != "quicklink"){%>
             <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Birthday of <%=result%>&dates=<%=data[result].date.replace(/-/g, '');%>/<%=data[result].date.replace(/-/g, '');%>&details=Birthday of <%=result%>&trp=false&recur=RRULE:FREQ=YEARLY" target="_blank"><%=result%>'s Birthday @<%=data[result].date%></a>
             <br>
         <%}%>
       <%}%>
       <br>
       *Click birthday to add to Google Calendar
+      <br>
+<!--        
+      <form id="create_quicklink">
+        <input name="quicklink" type="text" maxlength="100" required placeholder="Enter short url..." aria-labelledby="submit-dream">
+        <input name="recoverId" type="hidden" value="<%= recoverId %>"  aria-labelledby="submit-dream">
+        <input name="id" type="hidden" value="<%= bdayId %>" aria-labelledby="submit-dream">
+        <button type="submit" id="submit-dream">Shorten url</button>
+      </form>
+-->
     </main>
     <% include ../partials/social %>
   </body>
