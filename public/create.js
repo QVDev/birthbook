@@ -7,7 +7,6 @@ const createForm = document.getElementById('create-birthday');
 const emailInput = createForm.elements['email'];
 
 createForm.onsubmit = function(event) {  
-  console.log("create");
   event.preventDefault();      
   var xhr = new XMLHttpRequest();  
 

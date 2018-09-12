@@ -9,8 +9,6 @@ const recoverlink = createForm.elements['recoverId'];
 const id = createForm.elements['id'];
 
 createForm.onsubmit = function(event) {  
-  console.log("create quicklink");
-  console.log(id.value + ":" + recoverlink.value + ":" + quicklink.value)
   var data = JSON.stringify({ id: id.value, quicklink: quicklink.value});
   event.preventDefault();      
   
@@ -19,8 +17,7 @@ createForm.onsubmit = function(event) {
   xhr.open('POST', '/quicklink', true);
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.onload = function () {
-    console.log("Done");
-    window.location.href = "" + quicklink.value;
+    window.location.href = "/view/" + quicklink.value;
   };
   xhr.send(data);
 };
