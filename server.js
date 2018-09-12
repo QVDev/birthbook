@@ -46,15 +46,41 @@ app.get('/count', function(request, response) {
   });
 });
 
+app.get('/view/:quicklink', function(request, response) {
+  var quicklink = request.params.quicklink;
+  
+  var data = getQuicklink(quicklink)
+  .then(function(data){
+    console.log(data.recoverId);
+    
+    var id = data.id
+    var recoverId = data.recoverId
+    var shareLink = "http://birthbook.me/" + id;
+    var recoverLink = "http://birthbook.me/view/" + id + "/" + recoverId;
+    
+    if(data.quicklink) {
+      recoverLink = "http://birthbook.me/view/"+ data.quicklink;
+    }
+    
+      response.render('pages/view.ejs', {data: data, shareLink: shareLink, recoverLink: recoverLink, bdayId:id, recoverId:recoverId});
+    })
+  .catch(function(error){
+        response.render('pages/create.ejs');
+  });
+});
+
 app.get('/view/:id/:recoverId', function(request, response) {
     var id = request.params.id
     var recoverId = request.params.recoverId
     var shareLink = "http://birthbook.me/" + id;
-    var recoverLink = "http://birthbook.me/view/" + id + "/" + recoverId;
+    var recoverLink = "http://birthbook.me/view/" + id + "/" + recoverId;    
   
     var data = getUserData(id, recoverId)
     .then(function(result){
-        response.render('pages/view.ejs', {data: result, shareLink: shareLink, recoverLink: recoverLink});
+      if(data.quicklink) {
+        recoverLink = "http://birthbook.me/view/"+ data.quicklink;
+      }
+        response.render('pages/view.ejs', {data: result, shareLink: shareLink, recoverLink: recoverLink, bdayId:id, recoverId:recoverId});
       })
     .catch(function(error){
           response.render('pages/create.ejs');
@@ -98,6 +124,15 @@ app.post('/create', function(request, response) {
     });
 });
 
+app.post('/quicklink', function(request, response) {
+  console.log(request.body);
+  var id = request.body.id;
+  var quicklink = request.body.quicklink;
+  
+  makeQuickLink(id, quicklink);
+  response.send("OK");
+});
+
 var listener = app.listen(process.env.PORT, function() {
   console.log('Your app is listening on port ' + listener.address().port);
 });
@@ -119,6 +154,11 @@ function writeUserData(id, name, date) {
   });
 }
 
+function makeQuickLink(id, newLink) {
+  console.log(id + ":" + newLink);
+  var bdayRef = admin.database().ref("/" + id).update({ "quicklink": newLink });
+}
+
 function getUserData(id, email) {
   var bdayRef = admin.database().ref("/" + id);
   var data = bdayRef.once('value').then(function(snapshot) {
@@ -131,13 +171,26 @@ function getUserData(id, email) {
   return data;
 }
 
+function getQuicklink(quicklink) {
+  var bdayRef = admin.database().ref("/");
+  var data = bdayRef.once('value').then(function(snapshot) {
+    var user;
+    snapshot.forEach(function(childSnapshot) {
+      if(childSnapshot.val().quicklink == quicklink)
+        user = childSnapshot.val();
+      return;
+      });
+    return user;
+  });
+  return data;
+}
+
 function getBirthdayCount() {
   var bdayRef = admin.database().ref("/");
   var data = bdayRef.once('value').then(function(snapshot) {
     var count = 0;
     snapshot.forEach(function(childSnapshot) {
       count += childSnapshot.numChildren();
-      console.log(count);
       // childData will be the actual contents of the child
       var childData = childSnapshot.val();      
       });
