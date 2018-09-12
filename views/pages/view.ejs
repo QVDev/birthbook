@@ -7,20 +7,39 @@
   <body>
     <header>      
       <% include ../partials/welcome %>
-      <h1>
-        Collect birthdays from friends and family with ease.
-      </h1>
+      <h3>
+        Save this link        
+        <br>
+        <%= recoverLink %>
+      </h3>  
+      <h4>
+        keep it private, for your eyes only<br>        
+      </h4>             
     </header>
     <main>
+      <h2>
+        Share this:
+      </h2>
+      <h3>
+        <a href="<%= shareLink %>" target="_blank"><%= shareLink %></a>
+        <br>
+        or
+        <br>
+        <a href="whatsapp://send?text=<%= shareLink %> ">Whatsapp</a>
+        <br>
+      </h3>
       <br>
-      <br>
+      <h2>
+        Birthdays:
+      </h2>      
       <%for (var result in data){%>
         <%if (result != "recoverId" && result != "id"){%>
-            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Birthday of <%=result%>&dates=<%=data[result].date.replace(/-/g, '');%>/<%=data[result].date.replace(/-/g, '');%>&details=Birthday of <%=result%>&trp=false&recur=RRULE:FREQ=YEARLY" target="_blank">Add <%=result%>'s Birthday to Calendar</a>
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Birthday of <%=result%>&dates=<%=data[result].date.replace(/-/g, '');%>/<%=data[result].date.replace(/-/g, '');%>&details=Birthday of <%=result%>&trp=false&recur=RRULE:FREQ=YEARLY" target="_blank"><%=result%>'s Birthday @<%=data[result].date%></a>
             <br>
         <%}%>
       <%}%>
       <br>
+      *Click birthday to add to Google Calendar
     </main>
     <% include ../partials/social %>
   </body>
