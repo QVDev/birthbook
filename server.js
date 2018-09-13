@@ -125,7 +125,8 @@ app.post('/create', function(request, response) {
   
     var data = getUserData(id, recoverId)
     .then(function(result){
-        response.render('pages/view.ejs', {data: result, shareLink: link, recoverLink: recoverLink, bdayId:id, recoverId:recoverId});
+        // response.render('pages/view.ejs', {data: result, shareLink: link, recoverLink: recoverLink, bdayId:id, recoverId:recoverId});
+        response.send(recoverLink);
       })
     .catch(function(error){
           response.render('pages/create.ejs');
