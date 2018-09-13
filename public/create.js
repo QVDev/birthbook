@@ -13,8 +13,7 @@ createForm.onsubmit = function(event) {
   xhr.open('POST', '/create', true);
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.onload = function () {
-    const body = document.body;
-    body.innerHTML = this.responseText;     
+    window.location.href = this.responseText;
   };
   xhr.send();
 };

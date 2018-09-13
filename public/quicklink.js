@@ -9,11 +9,10 @@ const recoverlink = createForm.elements['recoverId'];
 const id = createForm.elements['id'];
 
 createForm.onsubmit = function(event) {  
+  event.preventDefault();
   var data = JSON.stringify({ id: id.value, quicklink: quicklink.value});
-  event.preventDefault();      
-  
-  var xhr = new XMLHttpRequest();  
 
+  var xhr = new XMLHttpRequest();  
   xhr.open('POST', '/quicklink', true);
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.onload = function () {
