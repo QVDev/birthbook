@@ -8,5 +8,7 @@
 <main>
       <a href="/">Create your own Birthday list</a>
 </main>
-<% include ../partials/social %>
-<% include ../partials/raven %>
+<footer>
+  <%- include('../partials/social', {shareLink: 'http://birthbook.me', text:"Never forget birthdays again.."}); %>
+  <% include ../partials/raven %>
+</footer>
