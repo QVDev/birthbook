@@ -145,6 +145,34 @@ footer {
   text-align:left;
 }
 
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+/*   background-color: DodgerBlue; */
+  margin: auto;
+  width: 70%;
+  min-width:200px;
+}
+
+.flex-container > div {
+/*   background-color: #f1f1f1; */
+  display:block;
+  border:none;
+  min-width:300px;
+  margin: auto;
+  width: 50%;  
+}
+
+.left {
+  text-align:left;
+}
+.right {
+  text-align:right;
+}
+.center {
+  text-align:center;
+}
+
 dt::before {
        content: "Question: ";      
    } 
