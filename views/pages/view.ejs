@@ -14,20 +14,20 @@
         <%= recoverLink %>
       </h3>  
       <h4>
-        keep it private, for your eyes only<br>        
+        keep it private, for your eyes only<br>          
       </h4>             
     </header>
-    <main>
+    <main>      
       <h2>
-        Share this:
+        Share via:
       </h2>
       <h3>
-        <a href="<%= shareLink %>" target="_blank"><%= shareLink %></a>
+        <%- include('../partials/social', {text:"Let me know your birthday, and I wont forget 😇"}); %>
         <br>
-        or
         <br>
-        <a href="whatsapp://send?text=<%= shareLink %> ">Whatsapp</a>
+        or copy url
         <br>
+        <a href="<%= shareLink %>" target="_blank"><%= shareLink %></a>        
       </h3>
       <br>
       <h2>
@@ -50,6 +50,8 @@
         <button type="submit" id="submit-dream">Shorten url</button>
       </form>
     </main>
-    <% include ../partials/social %>
+    <footer>
+      <%- include('../partials/social', {shareLink: 'http://birthbook.me', text:"Never forget birthdays again.."}); %>
+    </footer>
   </body>
 </html>

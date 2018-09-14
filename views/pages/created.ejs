@@ -22,5 +22,7 @@
   <br>
   <a href="whatsapp://send?text=<%= bdayId %> ">Share on whatsapp</a>
 </main>
-<% include ../partials/social %>
-<% include ../partials/raven %>
+<footer>
+  <%- include('../partials/social', {shareLink: 'http://birthbook.me', text:"Never forget birthdays again.."}); %>
+  <% include ../partials/raven %>
+</footer>

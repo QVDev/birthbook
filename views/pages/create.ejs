@@ -11,7 +11,7 @@
         Forgetting birthdays?
       </h1>
       <h2>
-        Use Birthbook
+        Use Birthbook        
       </h2>
       <br>
       <h4>
@@ -40,7 +40,9 @@
         </div>
       </div>
     </main>
-    <% include ../partials/social %>
-    <% include ../partials/raven %>
+    <footer>
+      <%- include('../partials/social', {shareLink: 'http://birthbook.me', text:"Never forget birthdays again.."}); %>
+      <% include ../partials/raven %>
+    </footer>
   </body>
 </html>
