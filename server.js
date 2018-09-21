@@ -119,7 +119,7 @@ app.post('/create', function(request, response) {
   var recoverId = shortid.generate();
   var id = createList(recoverId);
   var link = "http://birthbook.me/" + id;
-  var recoverLink = "http://birthbook.me/view/" + id + "/" + recoverId;
+  var recoverLink = "/view/" + id + "/" + recoverId;
 
 //   response.render('pages/created.ejs', {bdayId: link, recoverLink:recoverLink});
   
