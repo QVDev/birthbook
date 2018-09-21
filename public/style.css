@@ -9,13 +9,11 @@
 
 html, body {
   font-family: "Andale Mono";
-/*   background-color:rgb(255,255,255); */
-/*   https://pattern.flaticon.com/ */
-/*   background-image: url(/images/background.svg);  */
   height: 100%;
   width: 100%;
   padding: 0;
   margin: 0;
+  background-color:rgb(255,255,255);
 }
 
 body {
@@ -25,9 +23,9 @@ body {
 
 header {
   padding: 1em;
-  height: 17em;
-  background-color:rgb(39,35,60);
-  color:white;
+  height: 17em;  
+  color:black;
+  background-color:rgb(255,255,255);
 }
 
 main {
